@@ -3,14 +3,14 @@
 - preprocessingはデータの前処理に用いるクラス
 
 - import
-```python:
+```python
 from sklearn import preprocessing
 ```
 
 ## Binarization 
 Binarizerによってデータをバイナリに変換する
 
-```python:
+```python
 data=np.array(...)
 output=preprocessing.Binarizer(threshold=num).transform(data)
 ```
@@ -18,7 +18,7 @@ output=preprocessing.Binarizer(threshold=num).transform(data)
 
 ## Mean removal
 Mean removalは、平均0、標準偏差が1になるように変換する。変換は基本列単位
-```python:
+```python
 data_scaled=preprocessing.scale(input_data)
 data_scaled.mean() #平均
 data_scaled.std() #標準偏差
@@ -27,7 +27,7 @@ data_scaled.std() #標準偏差
 ## Scaling
 axisを列単位で見た場合に、最大値が1,最小値が０になるように線形変換
 
-```python:
+```python
 data_scaler_minmax=preprocessing.MinMaxScaler(feature_range=(min,max))
 data_scaled_minmax=data_scaler_minmax.fit_transform(input_data)
 ```
@@ -36,19 +36,19 @@ data_scaled_minmax=data_scaler_minmax.fit_transform(input_data)
 ## Normalization
 L1ノルムやL2ノルムにて列方向で正規化
 
-```python:
+```python
 data_normalized_l1 = preprocessing.normalize(input_data, norm='l1')
 data_normalized_l2 = preprocessing.normalize(input_data, norm='l2')
 ```
 
 ## Label Encoding
 例えば、次のようなデータ群があったとする。
-```python:
+```python
 input_data=["red","green","green","yellow","black","blue","red"]
 ```
 これらのデータを重複している要素をふまえてエンコーディングするには次のように行う。
 
-```python:
+```python
 encoder=preprocessing.LabelEncoder()
 encoder.fit(input_data)
 for i ,item in enumerate(encoder.classes_):
@@ -63,14 +63,14 @@ decoded_output=encoder.inverse_transform(encoded_label)  # Decoding
 これにより、encoderオブジェクトはinput_dataにあるデータをエンコードできるようになる。基本的には昇順にデータを表示ならべてエンコードされる。なので、今回の例で言うとアルファベット順に考えてblackを0として順に数値が当てはめられる。エンコードする場合はencoder.transform()を、デコードする場合はencoder.inverse_transform()を利用する。
 
 ## Logistic Regression
-```python: Logistic Regression.py
+```python
 from sklearn import linear_model
 classifier=linear_model.LogisticRegression(solver="liblinear",C=1)
 classifier.fit(X,y)
 ```
 
 ## Naive Bayes 
-```python:
+```python
 from sklearn.naive_bayes import GaussianNB
 from sklearn import cross_validation  #This will be removed
 
@@ -112,7 +112,7 @@ the samples for which we predicted 0 as the output and the gruond truth is 1 .
 
 # sklearnを利用した機械学習
 - 線形回帰分析の一例
-```python:Linear_Regression_1.py
+```python
 # 必要なモジュールのインポート
 from sklearn.linear_model import LinearRegression
 from sklearn.datasets import make_regression
